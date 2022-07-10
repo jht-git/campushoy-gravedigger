@@ -21,6 +21,7 @@ vim /opt/campushoy-gravedigger/user.conf
 cd /opt/campushoy-gravedigger
 python main.py
 ```
+> 关于请求被拦截的解释：[#1](https://github.com/lonive/campushoy-gravedigger/issues/1#issuecomment-1179734593)
 ## 6.创建定时任务
 ```shell
 crontab -e
