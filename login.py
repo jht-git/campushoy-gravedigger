@@ -23,6 +23,8 @@ def get_cookie():
     req_body['username'] = config['user']['username']
     req_body['password'] = config['user']['password']
     res = requests.get(LOGIN_URL, headers={'User-Agent': USER_AGENT}, allow_redirects=False)
+    if res.status_code == 418:
+        return '418'
     cookie = res.cookies
     redirect_url = res.headers['Location']
     _2lBepC = urllib.parse.parse_qs(urllib.parse.urlparse(redirect_url).query)['_2lBepC']
@@ -31,7 +33,7 @@ def get_cookie():
     res = requests.post(DO_LOGIN_URL, headers={'User-Agent': USER_AGENT}, cookies=cookie, data=req_body,
                         allow_redirects=False)
 
-    if (len(res.cookies) == 0):
+    if len(res.cookies) == 0:
         return
     else:
         redirect_url = res.headers['Location']
